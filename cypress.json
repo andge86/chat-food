@@ -1,0 +1,15 @@
+{
+  "baseUrl": "https://www.themoviedb.org",
+  "testFiles": "**/*.specs.ts",
+  "video": false,
+  "reporter": "../node_modules/mochawesome/src/mochawesome.js",
+  "reporterOptions": {
+    "reportDir": "TestReport",
+    "overwrite": true,
+    "html": true,
+    "json" : true,
+    "charts": true
+  },
+  "screenshotsFolder": "TestReport/assets"
+}
+

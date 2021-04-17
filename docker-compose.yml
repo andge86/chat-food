@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+
+  chat-food-tests-chrome:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "--browser chrome --headless"
+    volumes:
+      - ./cypress:/cypress
+      - ./cypress.json:/cypress.json
+      - ./package.json:/package.json
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+          size: 1000000000 # ~1gb
+
+  chat-food-tests-electron:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: "--headless"
+    volumes:
+      - ./cypress:/cypress
+      - ./cypress.json:/cypress.json
+      - ./package.json:/package.json
+      - type: tmpfs
+        target: /dev/shm
+        tmpfs:
+          size: 1000000000 # ~1gb

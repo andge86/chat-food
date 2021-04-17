@@ -1,0 +1,36 @@
+{
+  "name": "chat-food",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "cypress:run:headed:chrome": "cypress run --browser chrome",
+    "cypress:run:headless": "cypress run",
+    "report:merge": " mochawesome-merge TestReport/*.json > cypress-tests-report.json",
+    "report:generate": "marge --reportDir TestReport cypress-tests-report.json",
+    "report:create": "npm run report:merge ; npm run report:generate",
+    "cypress:run:headless:report": "npm run cypress:run:headless ; npm run report:create",
+    "cypress:run:headed:report": "npm run cypress:run:headed:chrome ; npm run report:create",
+    "eslint:fix": "./node_modules/.bin/eslint --fix --ignore-path .gitignore .",
+    "docker:run:chrome:electron": "docker-compose up",
+    "docker:build:chrome": "docker build -t chat-food_tests_chrome .",
+    "docker:build:electron": "docker build -t chat-food_tests_electron .",
+    "docker:run:chrome": "docker run --shm-size 512M chat-food_tests_chrome --browser chrome --headless",
+    "docker:run:electron": "docker run --shm-size 512M chat-food_tests_electron --headless"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "cypress": "^7.1.0",
+    "eslint": "^7.24.0",
+    "eslint-config-strongloop": "^2.1.0",
+    "mocha": "^8.3.2",
+    "mochawesome": "^6.2.2",
+    "mochawesome-merge": "^4.2.0",
+    "mochawesome-report-generator": "^5.2.0",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.4"
+  },
+  "description": ""
+}
