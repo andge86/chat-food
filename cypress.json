@@ -1,7 +1,7 @@
 {
   "baseUrl": "https://www.themoviedb.org",
   "testFiles": "**/*.specs.ts",
-  "video": false,
+  "video": true,
   "reporter": "../node_modules/mochawesome/src/mochawesome.js",
   "reporterOptions": {
     "reportDir": "TestReport",
