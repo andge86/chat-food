@@ -57,3 +57,12 @@ const goFromMainMenuTo = (mainMenuText: string, subMenuText: string) => {
 }
 
 Cypress.Commands.add('goFromMainMenuTo', goFromMainMenuTo);
+
+const verifyIfTextIsPresent = (CSSSelector) => {
+    cy.get(CSSSelector).invoke('text')
+        .then((text) => {
+        expect(text.toString().length).to.be.greaterThan(0)
+    });
+}
+
+Cypress.Commands.add('verifyIfTextIsPresent', verifyIfTextIsPresent);

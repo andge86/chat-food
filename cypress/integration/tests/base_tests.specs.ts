@@ -5,8 +5,10 @@ describe('Base Tests', () => {
     it('Check videos amount', () => {
         new BasePage()
             .openMainPage();
+
         // example of typescript usage
         cy.goFromMainMenuTo('Movies', 'Top Rated');
+
         new TopRatedMoviesPage()
             .clickOnSortResultsByDropdown()
             .clickOnSortResultsByDropdown()
@@ -16,6 +18,7 @@ describe('Base Tests', () => {
             .clickOnSearchButton()
             .clickOnMovieNumber(1)
             .clickOnVideos();
+
         const moviePage = new MoviePage();
         moviePage.getVideosHeaderElement().invoke('text')
             .then((videosHeaderText) => {
@@ -23,31 +26,34 @@ describe('Base Tests', () => {
                 .should('have.length', videosHeaderText.toString().replace('Videos ', ''));
         });
     });
+
+
     it('Check if popular movie info is loaded', () => {
         const moviePage = new BasePage()
             .openMainPage()
             .clickOnPopularMovieNumber(2);
+
+        // checking if poster image is loaded
         moviePage.getSeasonImage()
             .should('be.visible')
             .and(($img) => {
             expect($img[0].naturalWidth).to.be.greaterThan(0);
         });
-        // Better to check if the text is coming properly from database for all the cases below:
-        moviePage.getSeasonHeader().invoke('text').then((text) => {
-            expect(text.toString().length).to.be.greaterThan(0);
-        });
-        moviePage.getSeasonYearAndEpisodes().invoke('text').then((text) => {
-            expect(text.toString().length).to.be.greaterThan(0);
-        });
-        moviePage.getSeasonDescription().invoke('text').then((text) => {
-            expect(text.toString().length).to.be.greaterThan(0);
-        });
+
+        // checking if season header, year, episode and description text is loaded
+        // better to use database and verify if the proper text is loaded
+        cy.verifyIfTextIsPresent(moviePage.SEASON_HEADER);
+        cy.verifyIfTextIsPresent(moviePage.SEASON_YEAR_AND_EPISODES);
+        cy.verifyIfTextIsPresent(moviePage.SEASON_DESCRIPTION);
+
+        // checking if first comment's header text text is loaded
+        // better to use database and verify if the proper text is loaded
         moviePage.clickOnDiscussions().getDiscussionsAmount().invoke('text')
             .then(parseFloat)
             .then((amount) => {
             if (amount > 0) {
                 moviePage.getDiscussionsShownText().first().invoke('text').then((text) => {
-                    expect(text.toString().length).to.be.greaterThan(0);
+                   expect(text.toString().length).to.be.greaterThan(0);
                 });
             }
         });
