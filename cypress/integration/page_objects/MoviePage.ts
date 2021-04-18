@@ -32,7 +32,7 @@ class MoviePage {
     }
 
     getSeasonImage() {
-        return cy.get(this.SEASON_POSTER_IMAGE).scrollIntoView();
+        return cy.get(this.SEASON_POSTER_IMAGE).scrollIntoView().wait(1000);
     }
 
     getSeasonHeader() {
