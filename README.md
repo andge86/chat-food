@@ -33,7 +33,7 @@ Latest Report is at HitHub Pages: https://andge86.github.io/chat-food/
 ## Docker Commands
 
 1. Run docker using official guldes: https://www.docker.com/
-2. Go to project folder: **cd chat_food**
+2. Go to project folder: **cd chat-food**
 3. Install dependencied (if not installed): **npm install**
 
 #### Commands:
