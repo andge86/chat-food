@@ -1,4 +1,4 @@
-# How to run the Cypress (including typescript) testing framework:
+# How to run the Cypress (including typescript and eslint) testing framework:
 
 This guide assumes you have node with npm and git installed:
 
@@ -24,7 +24,7 @@ Note: you can use other commands predefined in Cypress official documentation: h
 ## Reporting
 
 **npm run cypress:run:headed:report** - run the command, it will generate mochwesome report TestReport/cypress-tests-report.html <br />
-Latest Report is at HitHub Pages: https://andge86.github.io/chat_food/
+Latest Report is at HitHub Pages: https://andge86.github.io/chat-food/
 
 ## Code Quality
 
@@ -38,11 +38,11 @@ Latest Report is at HitHub Pages: https://andge86.github.io/chat_food/
 
 #### Commands:
 
-**docker build -t chat_food_chrome .** -> will create docker image for chrome <br />
-**docker build -t chat_food_electron .** -> will create docker image for electron <br />
-**docker run --shm-size 512M chat_food_chrome --browser chrome** -> will run chat_food_chrome image inside docker container in Chrome browser <br />
-**docker run --shm-size 512M chat_food_electron --headless** -> will run chat_food_electron image inside docker container in Electron browser headless mode <br />
-**docker-compose up** -> will run chat_food_chrome and chat_food_electron images (predefined setup, please check docker-compose.yml file) <br />
+**docker build -t chat-food_chrome .** -> will create docker image for chrome <br />
+**docker build -t chat-food_electron .** -> will create docker image for electron <br />
+**docker run --shm-size 512M chat-food_chrome --browser chrome** -> will run chat-food_chrome image inside docker container in Chrome browser <br />
+**docker run --shm-size 512M chat-food_electron --headless** -> will run chat-food_electron image inside docker container in Electron browser headless mode <br />
+**docker-compose up** -> will run chat-food_chrome and chat-food_electron images (predefined setup, please check docker-compose.yml file) <br />
 
 You can use other docker commands like **docker ps, docker images, docker exec, docker attach**, etc.
 
